@@ -1,0 +1,21 @@
+INDEX VERSION 1.126+C:\Users\Wojciech\Desktop\take\workspace\.metadata\.plugins\org.eclipse.jdt.core
+3016919380.index
+607472894.index
+4169829364.index
+1081895492.index
+2818705068.index
+2930252660.index
+481382450.index
+2400203859.index
+1274446846.index
+3802528323.index
+931296177.index
+4025540338.index
+1583502900.index
+2663156243.index
+3786332144.index
+1824918718.index
+587452541.index
+760767664.index
+2231171608.index
+2510829227.index
