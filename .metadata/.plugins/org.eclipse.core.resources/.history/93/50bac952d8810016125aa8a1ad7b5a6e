@@ -16,10 +16,10 @@ public class FirmaEJB {
 		System.out.println("Stworzono autobus");
 	}
 	
-	/*public void deleteBus(int idc) {
+	public void deleteBus(int idc) {
 		Bus bus = manager.find(Bus.class, idc);
 		manager.remove(bus);
-	}*/
+	}
 	
 	public Bus findBus(int idc) {
 		return manager.find(Bus.class, idc);

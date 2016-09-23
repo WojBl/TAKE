@@ -18,16 +18,13 @@ public class FirmaREST implements Firma {
 	
 	//TODO tutaj implementujemy us³ugi, póki co 
 	
+	
+	//TODO poki co to jest zle
 	@Override
 	@GET
 	@Path("/places/{wolneMiejsca}/brand/{marka}/model/{model}/regNum/{regNum}")
-	public void createBus(@PathParam("wolneMiejsca") int places, @PathParam("marka") String marka, @PathParam("model") String model, @PathParam("regNum") String regNum) {
-		Bus bus = new Bus();
-		bus.setBrand(marka);
-		bus.setModel(model);
-		bus.setFreePlaces(places);
-		bus.setRegNumber(regNum);
-		bean.createBus(bus);
+	public void createBus(@PathParam("wolneMiejsca") int places, @PathParam("marka") String marka, @PathParam("model") String model, @PathParam("regNum") String regNum {
+		
 	}
 	
 	

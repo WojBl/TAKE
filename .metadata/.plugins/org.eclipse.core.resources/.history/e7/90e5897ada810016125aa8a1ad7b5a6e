@@ -7,7 +7,7 @@ import javax.ejb.Local;
 @Local
 public interface Firma {
 	
-	public abstract void createBus(int places, String brand, String model, String regNum);
+	public abstract void createBus(Bus bus);
 	
 	//public abstract void deleteBus(int idc);
 	
