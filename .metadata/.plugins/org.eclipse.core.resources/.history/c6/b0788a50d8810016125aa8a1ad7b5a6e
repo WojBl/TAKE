@@ -1,5 +1,0 @@
-package pl.firma;
-
-public class FirmaREST implements Firma {
-
-}
