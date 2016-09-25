@@ -7,7 +7,6 @@ INDEX VERSION 1.126+C:\Users\Wojciech\Desktop\take\workspace\.metadata\.plugins\
 1583502900.index
 4025540338.index
 3802528323.index
-760767664.index
 931296177.index
 481382450.index
 2930252660.index

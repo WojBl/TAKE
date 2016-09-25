@@ -17,6 +17,8 @@ public interface Firma {
 	
 	public abstract BusList getBuses();
 	
+	public abstract Bus getBusById(int id);
+	
 	public abstract String createPlace(int lat, int lon, String name);
 	
 	//public abstract String findPlace(String name);

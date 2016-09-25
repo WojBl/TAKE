@@ -27,7 +27,7 @@ public class FirmaEJB {
 		
 	}
 	
-	/*public void deleteBus(int idc) {
+	public void deleteBus(int idc) {
 		Bus bus = manager.find(Bus.class, idc);
 		manager.remove(bus);
 	}
@@ -39,7 +39,7 @@ public class FirmaEJB {
 	public void updateBus(Bus bus) {
 		bus = manager.merge(bus);
 		System.out.println("Zaktualizowano pojazd");
-	}*/
+	}
 	
 /***********************************************************************************************/
 
