@@ -44,7 +44,7 @@ public class FirmaREST implements Firma {
 	@Override
 	@GET
 	@Path ("/get_buses")
-	@Produces("application/json") /*poki co jest string, zeby obadac czy dziala*/
+	@Produces("application/json")
 	public BusList getBuses() {
 		List<Bus> lbus = bean.getBuses();
 		BusList b = new BusList(lbus);
@@ -60,6 +60,13 @@ public class FirmaREST implements Firma {
 		return bus;
 	}
  
-	
+	@Override
+	@GET
+	@Path ("/get_places")
+	@Produces("application/json")
+	public List<Place> getPlaces() {
+		List<Place> list = bean.getPlaces();
+		return list;
+	}
 
 }

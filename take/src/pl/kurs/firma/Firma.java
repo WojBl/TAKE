@@ -1,5 +1,6 @@
 package pl.kurs.firma;
 
+import java.util.List;
 import java.io.InputStream;
 
 import javax.ejb.Local;
@@ -22,5 +23,7 @@ public interface Firma {
 	public abstract String createPlace(int lat, int lon, String name);
 	
 	//public abstract String findPlace(String name);
+	
+	public abstract List<Place> getPlaces();
 
 }

@@ -53,4 +53,11 @@ public class FirmaEJB {
 		manager.remove(place);
 	}
 	
+	public List<Place> getPlaces() {
+		Query q = manager.createQuery("select p from Place p");
+		List<Place> list = q.getResultList();
+		System.out.println("Zwrocono miejsca");
+		return list;
+	}
+	
 }
