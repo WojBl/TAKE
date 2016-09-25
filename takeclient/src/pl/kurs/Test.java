@@ -2,23 +2,25 @@ package pl.kurs;
 
 public class Test {
 	public static void main(String[] args) {
-		String serverUrl = "http://localhost:8080/take/komis";
+		String serverUrl = "http://localhost:8080/take/Firma";
 		try{
-			String url = serverUrl+"/create";
-			String message = "<car id=\"0\"><make>Fiat</make><model>Brava</model><regNum>SH12345</regNum><price>1000</price></car>";
+			String url;
+			String message = "/places/45/brand/abc/model/abc/regNum/sk44fd";
+			url = serverUrl + message;
 			System.out.println("DOPOST "+url );
-			String txt = HttpHelper.doPost(url,message);
+			String txt = HttpHelper.doGet(url);
 			System.out.println("-----------------------");
 			System.out.println(txt);
 			System.out.println("-----------------------");
 
 			
-			url = serverUrl+"/get";
+			/*url = serverUrl+"/get";
 			System.out.println("DOGET "+url );
 			txt = HttpHelper.doGet(url);
 			System.out.println("-----------------------");
 			System.out.println(txt);
-			System.out.println("-----------------------");
+			System.out.println("-----------------------");*/
+		
 		} catch (Exception e) {e.printStackTrace();}
 	}
 }

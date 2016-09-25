@@ -36,6 +36,7 @@ public class KomisREST implements Komis {
 	@GET
 	@Path("/find/{idc}")
 	public String find(@PathParam("idc") int idc) {
+		System.out.println("gfgfg");
 		Car car = bean.find(idc);
 		StringWriter sw = new StringWriter();
 		JAXB.marshal(car, sw);
