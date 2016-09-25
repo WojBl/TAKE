@@ -14,7 +14,6 @@ public class Bus implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int idc;
 	int places;
-	int freePlaces;
 	String brand;
 	String model;
 	String regNum;
@@ -33,15 +32,7 @@ public class Bus implements Serializable {
 	public int getPlaces() {
 		return places;
 	}
-	
-	public void setFreePlaces(int temp) {
-		freePlaces = temp;
-	}
-	
-	public int getFreePlaces() {
-		return freePlaces;
-	}
-	
+		
 	public void setBrand(String tempBrand) {
 		brand = tempBrand;
 	}

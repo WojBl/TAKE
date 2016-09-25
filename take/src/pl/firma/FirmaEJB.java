@@ -1,6 +1,7 @@
 package pl.firma;
 
 import java.util.List;
+import java.util.Date;
 
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
@@ -88,6 +89,28 @@ public class FirmaEJB {
 		klient = manager.merge(klient);
 		System.out.println("Zaktualizowano dane klienta");
 	}
+	
+	/***********************************************************************************************/
+	
+	public void createPrzejazdy(Przejazdy przejazdy) {
+		manager.persist(przejazdy);
+		System.out.println("Stworzono przejazd");
+	}
+	
+	public void deletePrzejazdy(int id) {
+		Przejazdy przejazdy = manager.find(Przejazdy.class, id);
+		manager.remove(przejazdy);
+	}
+	
+	public Przejazdy findPrzejazdy(int id) {
+		return manager.find(Przejazdy.class, id);
+	}
+	
+	public void updatePrzejazdy(Przejazdy przejazdy) {
+		przejazdy = manager.merge(przejazdy);
+		System.out.println("Zaktualizowano przejazd");
+	}
+	
 	
 	
 }
