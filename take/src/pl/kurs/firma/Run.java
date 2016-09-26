@@ -6,14 +6,15 @@
 	import javax.xml.bind.annotation.XmlAttribute;
 	import javax.xml.bind.annotation.XmlRootElement;
 	import java.util.Date;
-
+	
+	
 	@Entity
 	@XmlRootElement
 	public class Run {
 		int id;
 		int idStart;
 		int idEnd;
-		int idBus;
+		Bus bus;
 		Date dateStart;
 		Date dateEnd;
 		
@@ -41,12 +42,12 @@
 			return idEnd;
 		}
 		
-		public void setIdBus(int idBus) {
-			this.idBus = idBus;
+		public void setBus(Bus bus) {
+			this.bus = bus;
 		}
 		
-		public int getIdBus() {
-			return idBus;
+		public Bus getBus() {
+			return bus;
 		}
 		
 		public void setdateStart(Date dateStart) {
