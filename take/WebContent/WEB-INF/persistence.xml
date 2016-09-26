@@ -7,6 +7,8 @@
 		<jta-data-source>java:/DefaultDS</jta-data-source>
 			<class>pl.kurs.firma.Bus</class>
 			<class>pl.kurs.firma.Place</class>
+			<class>pl.kurs.firma.Client</class>
+			<class>pl.kurs.firma.Reservation</class>
 		<properties>
 			<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
 			  <property name="hibernate.hbm2ddl.auto" value="update"/>

@@ -64,6 +64,11 @@ public class FirmaEJB {
 		System.out.println("Zwrocono miejsca");
 		return list;
 	}
+	
+	public Place findPlace(int id) {
+		Place place = manager.find(Place.class, id);
+		return place;
+	}
 	/***********************************************************************************************/
 	//Client
 	/***********************************************************************************************/
@@ -140,6 +145,12 @@ public class FirmaEJB {
 	public void updateRun(Run run) {
 		run = manager.merge(run);
 		System.out.println("Zaktualizowano przejazd");
+	}
+	
+	public List<Run> getRuns() {
+		Query q = manager.createQuery("select b from Run b ");
+		List<Run> list = q.getResultList();
+		return list;
 	}
 	
 	/***********************************************************************************************/
