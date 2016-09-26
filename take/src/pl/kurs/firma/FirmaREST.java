@@ -18,12 +18,12 @@ public class FirmaREST implements Firma {
 	
 	@Override
 	@GET
-	@Path("/add_car/places/{wolneMiejsca}/brand/{marka}/model/{model}/regNum/{regNum}")
-	public String createBus(@PathParam("wolneMiejsca") int places, @PathParam("marka") String marka, @PathParam("model") String model, @PathParam("regNum") String regNum) {
+	@Path("/add_car/places/{miejsca}/brand/{marka}/model/{model}/regNum/{regNum}")
+	public String createBus(@PathParam("miejsca") int places, @PathParam("marka") String marka, @PathParam("model") String model, @PathParam("regNum") String regNum) {
 		Bus bus = new Bus();
 		bus.setBrand(marka);
 		bus.setModel(model);
-		bus.setFreePlaces(places);
+		bus.setPlaces(places);
 		bus.setRegNum(regNum);
 		bean.createBus(bus);
 		return "dodano busa";
