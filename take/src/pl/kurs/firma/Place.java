@@ -1,5 +1,6 @@
 package pl.kurs.firma;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,7 +9,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class Place {
+public class Place implements Serializable  {
+	
+	private static final long serialVersionUID = 1L;
 	int id;
 	String name;
 	double lat;
