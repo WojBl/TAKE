@@ -11,9 +11,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXB;
 
-import pl.kurs.komis.Car;
 
 @Path("/firma")
 @Stateless
@@ -23,18 +23,14 @@ public class FirmaREST implements Firma {
 	FirmaEJB bean;
 	
 	@Override
-	@GET
-	@Path("/add_car/places/{miejsca}/brand/{marka}/model/{model}/regNum/{regNum}")
-	public String createBus(@PathParam("miejsca") int places, @PathParam("marka") String marka, @PathParam("model") String model, @PathParam("regNum") String regNum) {
-		Bus bus = new Bus();
-		bus.setBrand(marka);
-		bus.setModel(model);
-		bus.setPlaces(places);
-		bus.setRegNum(regNum);
+	@POST
+	@Path("/add_car")
+	public String createBus(InputStream is) {
+		Bus bus = JAXB.unmarshal(is,Bus.class);
 		bean.createBus(bus);
 		return "dodano busa";
 	}
-	
+
 	@Override
 	@GET
 	@Path ("/get_buses")
@@ -47,7 +43,7 @@ public class FirmaREST implements Firma {
 	
 	@Override
 	@GET
-	@Path ("/get_buses/id/{id}")
+	@Path ("/get_buses/{id}")
 	@Produces("application/json")
 	public Bus getBusById(@PathParam("id") int id) {
 		Bus bus = bean.findBus(id);
@@ -56,7 +52,7 @@ public class FirmaREST implements Firma {
 	
 	@Override
 	@GET
-	@Path ("/delete_bus/id/{id}")
+	@Path ("/delete_bus/{id}")
 	public void deleteBus(@PathParam("id") int idc) {
 		bean.deleteBus(idc);
 	}
@@ -64,13 +60,10 @@ public class FirmaREST implements Firma {
 	
 /*=====================================PLACE==================================================*/
 	@Override
-	@GET
-	@Path("add_place/lat/{lat}/lon/{lon}/name/{name}")
-	public String createPlace(@PathParam("lat") int lat, @PathParam("lon") int lon, @PathParam("name") String name) {
-		Place place = new Place();
-		place.setLat(lat);
-		place.setLon(lon);
-		place.setName(name);
+	@POST
+	@Path("/add_place")
+	public String createPlace(InputStream is) {
+		Place place = JAXB.unmarshal(is,Place.class);
 		bean.createPlace(place);
 		return "dodano miejsce";
 	}
@@ -86,7 +79,7 @@ public class FirmaREST implements Firma {
 	
 	@Override
 	@GET
-	@Path ("/get_places/id/{id}")
+	@Path ("/get_places/{id}")
 	@Produces("application/json") 
 	public Place getPlaceById(@PathParam("id") int id) {
 		Place place = bean.findPlace(id);
@@ -95,7 +88,7 @@ public class FirmaREST implements Firma {
 	
 	@Override
 	@GET
-	@Path ("/delete_place/id/{id}")
+	@Path ("/delete_place/{id}")
 	@Produces("application/json")
 	public String deletePlace(@PathParam("id") int id) {
 		bean.deletePlace(id);
@@ -107,7 +100,7 @@ public class FirmaREST implements Firma {
 	@Override
 	@POST
 	@Path ("/add_client")
-	public String addClient(InputStream is) {
+	public String createClient(InputStream is) {
 		Client client = JAXB.unmarshal(is,Client.class);
 		bean.createClient(client);
 		return "dodano klienta";
@@ -115,7 +108,7 @@ public class FirmaREST implements Firma {
 	
 	@Override
 	@GET
-	@Path ("/get_client/id/{id}")
+	@Path ("/get_client/{id}")
 	@Produces("application/json")
 	public Client getClientById(@PathParam("id")int id) {
 		Client client = bean.findClient(id);
@@ -124,7 +117,7 @@ public class FirmaREST implements Firma {
 	
 	@Override
 	@GET
-	@Path ("/delete_client/id/{id})")
+	@Path ("/delete_client/{id})")
 	@Produces ("application/json")
 	public String deleteClient(@PathParam("id")int id) {
 		bean.deleteClient(id);
@@ -134,16 +127,12 @@ public class FirmaREST implements Firma {
 	/*=============================================RUN=========================================*/
 	
 	@Override
-	@GET
-	@Path ("/add_run/id_start/{ids}/id_finish/{idf}/id_bus/{idb}/date_start/{dateS}/date_finish/{dateF}")
-	public void addRun(@PathParam("ids") int ids, @PathParam("idf") int idf, @PathParam("idb") int idb,@PathParam("dateS") Date dateS, @PathParam("dateF") Date dateF) {
-		Run run = new Run();
-		run.setIdStart(ids);
-		run.setdateEnd(dateF);
-		run.setIdBus(idb);
-		run.setdateStart(dateS);
-		run.setdateEnd(dateF);
+	@POST
+	@Path ("/add_run")
+	public String createRun(InputStream is) {
+		Run run = JAXB.unmarshal(is,Run.class);
 		bean.createRun(run);
+		return "dodano przejazd!";
 	}
 	
 	@Override
@@ -157,7 +146,7 @@ public class FirmaREST implements Firma {
 	
 	@Override
 	@GET
-	@Path("/delete_run/id/{id}")
+	@Path("/delete_run/{id}")
 	public String deleteRun(@PathParam("id") int id) {
 		bean.deleteRun(id);
 		return "usunieto przejazd";
@@ -168,14 +157,14 @@ public class FirmaREST implements Firma {
 	@Override
 	@POST
 	@Path("/add_reservation")
-	public void addReservation(InputStream is) {
+	public void createReservation(InputStream is) {
 		Reservation res = JAXB.unmarshal(is,Reservation.class);
 		bean.createReservation(res);
 	}
 	
 	@Override
 	@GET
-	@Path("/get_reservation/id/{id}")
+	@Path("/get_reservation/{id}")
 	@Produces("application/json")
 	public Reservation getReservation(@PathParam("id") int id) {
 		Reservation res = bean.findReservation(id);
@@ -184,7 +173,7 @@ public class FirmaREST implements Firma {
 	
 	@Override
 	@GET
-	@Path("/delete_reservation/id/{id}")
+	@Path("/delete_reservation/{id}")
 	public String deleteReservation(@PathParam("id") int id) {
 		bean.deleteReservation(id);
 		return "usunieto rezerwacje";

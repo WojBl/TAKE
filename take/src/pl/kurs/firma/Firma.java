@@ -9,19 +9,15 @@ import javax.ejb.Local;
 @Local
 public interface Firma {
 	
-	public abstract String createBus(int places, String brand, String model, String regNum);
+	public abstract String createBus(InputStream is);
 	
 	public abstract void deleteBus(int idc);
-	
-	//public abstract void updateBus(int idc);
 	
 	public abstract BusList getBuses();
 	
 	public abstract Bus getBusById(int id);
 	
-	public abstract String createPlace(int lat, int lon, String name);
-	
-	//public abstract String getPlaceById(String name);
+	public abstract String createPlace(InputStream is);
 	
 	public abstract List<Place> getPlaces();
 
@@ -29,19 +25,19 @@ public interface Firma {
 	
 	public abstract String deletePlace(int id);
 	
-	public abstract String addClient(InputStream is);
+	public abstract String createClient(InputStream is);
 	
 	public abstract Client getClientById(int id);
 	
 	public abstract String deleteClient(int id);
 	
-	public abstract void addRun(int ids, int idf, int idb, Date dateS, Date dateF);
+	public abstract String createRun(InputStream is);
 	
 	public abstract List<Run> getRuns();
 	
 	public abstract String deleteRun(int id);
 	
-	public abstract void addReservation(InputStream is);
+	public abstract void createReservation(InputStream is);
 	
 	public abstract Reservation getReservation(int id);
 	
