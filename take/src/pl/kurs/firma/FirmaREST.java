@@ -14,6 +14,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXB;
 
+import pl.kurs.komis.Car;
+
 
 @Path("/firma")
 @Stateless
@@ -24,11 +26,25 @@ public class FirmaREST implements Firma {
 	
 	@Override
 	@POST
-	@Path("/add_car")
+	@Path("/add_bus")
 	public String createBus(InputStream is) {
 		Bus bus = JAXB.unmarshal(is,Bus.class);
 		bean.createBus(bus);
 		return "dodano busa";
+	}
+	
+	@Override
+	@POST
+	@Path("/update_bus")
+	public String updateBus(InputStream is) {
+		try {
+			Bus newbus = (Bus) JAXB.unmarshal(is,Bus.class);
+			bean.update(newbus);
+			return "bus updated!";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "bus not updated :(";
+		}
 	}
 
 	@Override

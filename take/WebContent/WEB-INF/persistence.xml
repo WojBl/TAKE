@@ -8,11 +8,15 @@
 			<class>pl.kurs.firma.Bus</class>
 			<class>pl.kurs.firma.Place</class>
 			<class>pl.kurs.firma.Client</class>
+			<class>pl.kurs.firma.Run</class>
 			<class>pl.kurs.firma.Reservation</class>
-		<properties>
-			<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
-			  <property name="hibernate.hbm2ddl.auto" value="update"/>
-		</properties>
+
+			
+			
+			<properties>
+				<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			  	<!-- property name="hibernate.hbm2ddl.auto" value="update"/> -->
+			</properties>
 	</persistence-unit>
 	
 	<persistence-unit name="komis">
@@ -20,8 +24,8 @@
 		<class>pl.kurs.komis.Car</class>
 
 		<properties>
-			<!--<property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
-			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->
 		</properties>
 	</persistence-unit>
 	

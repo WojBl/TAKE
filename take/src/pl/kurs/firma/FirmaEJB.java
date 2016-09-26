@@ -22,6 +22,10 @@ public class FirmaEJB {
 		System.out.println("Stworzono autobus");
 	}
 	
+	public void update(Bus bus) {
+		bus = manager.merge(bus);
+	}
+	
 	public List<Bus> getBuses() {
 		Query q = manager.createQuery("select b from Bus b ");
 		List<Bus> list = q.getResultList();
@@ -148,7 +152,7 @@ public class FirmaEJB {
 	}
 	
 	public List<Run> getRuns() {
-		Query q = manager.createQuery("select b from Run b ");
+		Query q = manager.createQuery("select r from Run r ");
 		List<Run> list = q.getResultList();
 		return list;
 	}

@@ -3,11 +3,13 @@
 	import java.io.Serializable;
 
 	import javax.persistence.Entity;
-	import javax.persistence.GeneratedValue;
-	import javax.persistence.Id;
-	import javax.xml.bind.annotation.XmlAttribute;
-	import javax.xml.bind.annotation.XmlRootElement;
-	import java.util.Date;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import java.io.Serializable;
+import java.util.Date;
 	
 	
 	@Entity
@@ -15,12 +17,15 @@
 	public class Run implements Serializable{
 		
 		private static final long serialVersionUID = 1L;
+
 		int id;
 		int idStart;
 		int idEnd;
 		Bus bus;
 		Date dateStart;
 		Date dateEnd;
+		String description;
+		String img;
 		
 		@Id
 		@GeneratedValue
@@ -29,6 +34,9 @@
 			return id;
 		}
 		
+		public void setId(int id) {
+			this.id = id;
+		}
 		
 		public void setIdStart(int idStart) {
 			this.idStart = idStart;
@@ -69,4 +77,22 @@
 		public Date getdateEnd() {
 			return dateEnd;
 		}
+		
+		public String getDesc() {
+			return description;
+		}
+		
+		public void setDesc(String description) {
+			this.description = description;
+		}
+
+		public void setImg(String img) {
+			this.img = img;
+		}
+		
+		public String getImg() {
+			return img;
+		}
+		
+		
 	}

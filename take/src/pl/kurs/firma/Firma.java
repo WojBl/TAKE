@@ -11,6 +11,8 @@ public interface Firma {
 	
 	public abstract String createBus(InputStream is);
 	
+	public abstract String updateBus(InputStream is);
+	
 	public abstract void deleteBus(int idc);
 	
 	public abstract BusList getBuses();
