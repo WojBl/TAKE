@@ -10,8 +10,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Reservation {
 	int id;
-	int idRun;
-	int idClient;
+	Run run;
+	Client client;
 	
 	@Id
 	@GeneratedValue
@@ -24,19 +24,19 @@ public class Reservation {
 		this.id = id;
 	}
 	
-	public void setIdRun(int idRun) {
-		this.idRun = idRun;
+	public void setRun(Run run) {
+		this.run = run;
 	}
 	
-	public int getIdRun() {
-		return idRun;
+	public Run getRun() {
+		return run;
 	}
 		
-	public void setIdClient(int idClient) {
-		this.idClient = idClient;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 	
-	public int getIdClient() {
-		return idClient;
+	public Client getClient() {
+		return client;
 	}
 }
