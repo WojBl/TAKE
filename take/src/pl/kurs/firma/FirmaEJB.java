@@ -93,6 +93,12 @@ public class FirmaEJB {
 		return manager.find(Client.class, id);
 	}
 	
+	public List<Client> getClients() {
+		Query q = manager.createQuery("select c from Client c ");
+		List<Client> list = q.getResultList();
+		return list;
+	}
+	
 	public List<Client> findByName(String name) {
 		Query q = manager.createQuery("select k from Client k where k.name like :name");
 		q.setParameter("name", name);
@@ -173,6 +179,12 @@ public class FirmaEJB {
 	public void deleteReservation(int id) {
 		Reservation reservation = manager.find(Reservation.class, id);
 		manager.remove(reservation);
+	}
+	
+	public List<Reservation> getReservations() {
+		Query q = manager.createQuery("select re from Reservations re ");
+		List<Reservation> list = q.getResultList();
+		return list;
 	}
 	
 	public Reservation findReservation(int id) {

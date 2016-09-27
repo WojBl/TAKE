@@ -33,6 +33,8 @@ public interface Firma {
 	
 	public abstract Client getClientById(int id);
 	
+	public List<Client> getClients();
+	
 	public abstract String deleteClient(int id);
 	
 	public abstract String createRun(InputStream is);
@@ -48,5 +50,7 @@ public interface Firma {
 	public abstract Reservation getReservation(int id);
 	
 	public abstract String deleteReservation(int id);
+	
+	public List<Reservation> getReservations();
 	
 }

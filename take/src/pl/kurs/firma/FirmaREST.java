@@ -130,11 +130,20 @@ public class FirmaREST implements Firma {
 	
 	@Override
 	@GET
-	@Path ("/get_client/{id}")
+	@Path ("/get_clients/{id}")
 	@Produces("application/json")
 	public Client getClientById(@PathParam("id")int id) {
 		Client client = bean.findClient(id);
 		return client;
+	}
+	
+	@Override
+	@GET
+	@Path ("/get_clients")
+	@Produces("application/json")
+	public List<Client> getClients() {
+		List<Client> lcli = bean.getClients();
+		return lcli;
 	}
 	
 	@Override
@@ -212,6 +221,15 @@ public class FirmaREST implements Firma {
 		res.setClient(client);
 		Run run = bean.findRun(idr);
 		bean.createReservation(res);
+	}
+	
+	@Override
+	@GET
+	@Path("/get_reservation")
+	@Produces("application/json")
+	public List<Reservation> getReservations() {
+		List<Reservation> lres = bean.getReservations();
+		return lres;
 	}
 	
 	@Override
