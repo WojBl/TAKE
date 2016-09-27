@@ -1,8 +1,13 @@
 package pl.kurs.firma;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -11,14 +16,14 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXB;
-
-import pl.kurs.komis.Car;
 
 
 @Path("/firma")
 @Stateless
+
 public class FirmaREST implements Firma {
 	
 	@EJB
@@ -29,6 +34,8 @@ public class FirmaREST implements Firma {
 	@Path("/add_bus")
 	public String createBus(InputStream is) {
 		Bus bus = JAXB.unmarshal(is,Bus.class);
+		//List<Run> runs = new ArrayList<Run>();
+		//bus.setRuns(runs);
 		bean.createBus(bus);
 		return "dodano busa";
 	}
@@ -50,11 +57,10 @@ public class FirmaREST implements Firma {
 	@Override
 	@GET
 	@Path ("/get_buses")
-	@Produces("application/json")
-	public BusList getBuses() {
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Bus> getBuses() {
 		List<Bus> lbus = bean.getBuses();
-		BusList b = new BusList(lbus);
-		return b;
+		return lbus;
 	}
 	
 	@Override
@@ -151,6 +157,25 @@ public class FirmaREST implements Firma {
 		return "dodano przejazd!";
 	}
 	
+	
+	@Override
+	@GET
+	@Path ("/add_run/{idb}/{idps}/{idpe}/{dateStart}/{dateEnd}")
+	public String crRun(@PathParam("idb") int idb, @PathParam("idps") int idps, @PathParam("idpe") int idpe,@PathParam("dateStart")Date start, @PathParam("dateEnd")Date end) {
+		Run run = new Run();
+		run.setdateStart(start);
+		run.setdateEnd(end);
+		Place pStart = bean.findPlace(idps);
+		run.setPlaceStart(pStart);
+		Place pEnd = bean.findPlace(idpe);
+		run.setPlaceEnd(pEnd);
+		Bus bus = bean.findBus(idb);
+		run.setBus(bus);
+		bean.createRun(run);
+		bean.update(bus);
+		
+		return "dodano przejazd";
+	}
 	@Override
 	@GET
 	@Path("/get_runs")
@@ -179,8 +204,19 @@ public class FirmaREST implements Firma {
 	}
 	
 	@Override
+	@POST
+	@Path("/add_reservation/{idc}/{idr}")
+	public void crReservation(@PathParam("idc") int idc, @PathParam("idr") int idr) {
+		Reservation res = new Reservation();
+		Client client = bean.findClient(idc);
+		res.setClient(client);
+		Run run = bean.findRun(idr);
+		bean.createReservation(res);
+	}
+	
+	@Override
 	@GET
-	@Path("/get_reservation/{id}")
+	@Path("/get_reservation/{idc}")
 	@Produces("application/json")
 	public Reservation getReservation(@PathParam("id") int id) {
 		Reservation res = bean.findReservation(id);
@@ -194,4 +230,5 @@ public class FirmaREST implements Firma {
 		bean.deleteReservation(id);
 		return "usunieto rezerwacje";
 	}
+	
 }

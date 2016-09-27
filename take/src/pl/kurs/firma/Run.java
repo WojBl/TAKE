@@ -1,10 +1,13 @@
 	package pl.kurs.firma;
 
-	import java.io.Serializable;
-
-	import javax.persistence.Entity;
+	import java.io.Serializable;	
+	
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -17,10 +20,17 @@ import java.util.Date;
 	public class Run implements Serializable{
 		
 		private static final long serialVersionUID = 1L;
-
+		
+		@Column(name="id", unique=true)
 		int id;
-		int idStart;
-		int idEnd;
+		@ManyToOne
+		@JoinColumn(name="place_id")
+		Place start;
+		@ManyToOne
+		@JoinColumn(name="place_id")
+		Place end;
+		@ManyToOne
+		@JoinColumn(name="bus_id")
 		Bus bus;
 		Date dateStart;
 		Date dateEnd;
@@ -38,20 +48,20 @@ import java.util.Date;
 			this.id = id;
 		}
 		
-		public void setIdStart(int idStart) {
-			this.idStart = idStart;
+		public void setPlaceStart(Place place) {
+			this.start = place;
 		}
 		
-		public int getIdStart() {
-			return idStart;
+		public void setPlaceEnd(Place place) {
+			this.start = place;
 		}
 		
-		public void setidEnd(int idEnd) {
-			this.idEnd = idEnd;
+		public Place getPlaceStart() {
+			return start;
 		}
 		
-		public int getidEnd() {
-			return idEnd;
+		public Place getPlaceEnd() {
+			return end;
 		}
 		
 		public void setBus(Bus bus) {

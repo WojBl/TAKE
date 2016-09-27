@@ -3,6 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
 	
+	
 	<persistence-unit name="firma">
 		<jta-data-source>java:/DefaultDS</jta-data-source>
 			<class>pl.kurs.firma.Bus</class>
@@ -14,6 +15,7 @@
 			
 			
 			<properties>
+				<property name="sessionFactory" value="sessionFactory" />
 				<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			  	<!-- property name="hibernate.hbm2ddl.auto" value="update"/> -->
 			</properties>
@@ -24,7 +26,7 @@
 		<class>pl.kurs.komis.Car</class>
 
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->
 		</properties>
 	</persistence-unit>

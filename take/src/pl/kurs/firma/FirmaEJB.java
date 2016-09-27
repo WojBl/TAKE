@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
+import javax.persistence.CascadeType;
 import javax.persistence.EntityManager;
+import javax.persistence.ManyToOne;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 @Stateless
@@ -38,7 +41,7 @@ public class FirmaEJB {
 		Bus bus = manager.find(Bus.class, idc);
 		manager.remove(bus);
 	}
-
+	
 	public Bus findBus(int idc) {
 		return manager.find(Bus.class, idc);
 	}
@@ -139,6 +142,7 @@ public class FirmaEJB {
 	
 	public void deleteRun(int id) {
 		Run run = manager.find(Run.class, id);
+		//manager.remove(parent);
 		manager.remove(run);
 	}
 	

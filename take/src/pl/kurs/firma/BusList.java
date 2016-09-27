@@ -1,4 +1,4 @@
-package pl.kurs.firma;
+/*package pl.kurs.firma;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class BusList {
 	public BusList(List<Bus> busList) {
 		super();
 		this.busList = busList;
-	}
+	}S
 	
 	public BusList() {}
 	
@@ -23,4 +23,4 @@ public class BusList {
 	public void setBusList(List<Bus> busList) {
 		this.busList = busList;
 	}
-}
+}*/

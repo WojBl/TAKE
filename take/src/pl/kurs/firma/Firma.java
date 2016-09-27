@@ -9,13 +9,15 @@ import javax.ejb.Local;
 @Local
 public interface Firma {
 	
+	public abstract String crRun(int idb,int idps,int idpe, Date start, Date end);
+	
 	public abstract String createBus(InputStream is);
 	
 	public abstract String updateBus(InputStream is);
 	
 	public abstract void deleteBus(int idc);
 	
-	public abstract BusList getBuses();
+	public abstract List<Bus> getBuses();
 	
 	public abstract Bus getBusById(int id);
 	
@@ -40,6 +42,8 @@ public interface Firma {
 	public abstract String deleteRun(int id);
 	
 	public abstract void createReservation(InputStream is);
+	
+	public abstract void crReservation(int idc, int idr);
 	
 	public abstract Reservation getReservation(int id);
 	
