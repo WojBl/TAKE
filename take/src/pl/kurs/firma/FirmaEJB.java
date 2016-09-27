@@ -204,4 +204,13 @@ public class FirmaEJB {
 		System.out.println("Zaktualizowano rezerwacje");
 	}
 	
+	public List<Reservation> getReservationsByRun(int runId) {
+		Query q = manager.createQuery("select r from Reservation r, Run run where run.id = :runId");
+		q.setParameter("runId", runId);
+		@SuppressWarnings("unchecked")
+		List<Reservation> list = q.getResultList();
+		return list;
+	}
+	
+	
 }

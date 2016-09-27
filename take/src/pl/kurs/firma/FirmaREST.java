@@ -258,4 +258,13 @@ public class FirmaREST implements Firma {
 		return "usunieto rezerwacje";
 	}
 	
+	@Override
+	@GET
+	@Path ("/get_reservations_by_run/{id}")
+	@Produces("application/json")
+	public List<Reservation> getReservationByRun(@PathParam("id") int id) {
+		List<Reservation> list = bean.getReservationsByRun(id);
+		return list;
+	}
+	
 }

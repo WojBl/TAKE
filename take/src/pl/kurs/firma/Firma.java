@@ -56,4 +56,6 @@ public interface Firma {
 	
 	public abstract List<Run> getRunById(int id);
 	
+	public abstract List<Reservation> getReservationByRun(int id);
+	
 }
