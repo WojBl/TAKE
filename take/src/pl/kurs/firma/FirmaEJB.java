@@ -167,6 +167,14 @@ public class FirmaEJB {
 		return list;
 	}
 	
+	public List<Run> getRunsByBus(int busId) {
+		Query q = manager.createQuery("select r from Run r, Bus b where b.idc = :busId");
+		q.setParameter("busId", busId);
+		@SuppressWarnings("unchecked")
+		List<Run> list = q.getResultList();
+		return list;
+	}
+	
 	/***********************************************************************************************/
 	//Reservation
 	/***********************************************************************************************/

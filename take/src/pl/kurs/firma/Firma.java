@@ -5,6 +5,7 @@ import java.util.List;
 import java.io.InputStream;
 
 import javax.ejb.Local;
+import javax.ws.rs.PathParam;
 
 @Local
 public interface Firma {
@@ -52,5 +53,7 @@ public interface Firma {
 	public abstract String deleteReservation(int id);
 	
 	public List<Reservation> getReservations();
+	
+	public abstract List<Run> getRunById(int id);
 	
 }

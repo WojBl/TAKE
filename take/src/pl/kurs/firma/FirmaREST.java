@@ -202,6 +202,15 @@ public class FirmaREST implements Firma {
 		return "usunieto przejazd";
 	}
 	
+	@Override
+	@GET
+	@Path ("/get_runs_by_bus/{id}")
+	@Produces("application/json")
+	public List<Run> getRunById(@PathParam("id") int id) {
+		List<Run> list = bean.getRunsByBus(id);
+		return list;
+	}
+	
 	/*===========================================Reservation===================================*/
 	
 	@Override
